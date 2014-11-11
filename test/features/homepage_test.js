@@ -13,11 +13,14 @@ describe('home page', function() {
   before(function() {
     this.server = http.createServer(app).listen(5000);
     this.browser = new Browser({ site: 'http://localhost:5000' });
-    console.log('Hello')
   });
 
   before(function(done) {
     this.browser.visit('/', done);
+  });
+
+  after(function(done){
+    this.server.close(done);
   });
 
   it('should have the name of the site', function(){
