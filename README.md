@@ -9,4 +9,6 @@ This tool will help rank people's preferences, and suggest possible team groupin
 ## Installing
 
 
+npm install
+
 ## D
