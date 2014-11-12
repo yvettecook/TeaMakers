@@ -1,7 +1,6 @@
 process.env.NODE_ENV = 'test'
-var app = require ('../../server.js')
+var server = require ('../../server.js')
 var Browser = require('zombie');
-var http = require('http');
 
 var chai = require('chai');
 var mocha = require('mocha');
@@ -11,31 +10,40 @@ var assert = require('assert');
 describe('coach makeathon creation form', function() {
 
   before(function() {
-    this.server = http.createServer(app).listen(5000);
-    this.browser = new Browser({ site: 'http://localhost:5000' });
+    server = server.listen(5000);
+    browser = new Browser({ site: 'http://localhost:5000' });
   });
 
   // before(function(done) {
   //   this.browser.visit('/createmakeathon', done);
   // });
 
-  after(function(done){
-    this.server.close(done);
-  });
-
-  // it('should have a header "Create makeathon"', function() {
-  //   this.browser.visit('/createmakeathon', function(error, browser) {
-  //     expect(browser.text('h1')).to.equal('Create makeathon');
-  //   });
-      
+  // after(function(){
+  //   this.server.close();
   // });
 
-  it('should have a field to enter the name of the makeathon', function() {
-    // this.browser.pressButton('Submit');
-    this.browser.visit('/createmakeathon/createmakeathon/makeathonmanagement', function(error, browser) {
-      expect(browser.text('h2')).to.equal('Success!');
+  it('should have a header "Create makeathon"', function(done) {
+    browser.visit('/createmakeathon', function(error) {
+      try {
+        expect(browser.text("h1")).to.equal('Create makeathon');
+        done();
+      } catch(error) {
+        done(error);
+      }
+    });     
+  });
+
+  it('should have a field to enter the name of the makeathon', function(done) {
+    browser.visit('/createmakeathon/createmakeathon/makeathonmanagement', function(error) {
+      try {
+        expect(browser.text('h2')).to.equal('Success!');
+        done();
+      } catch(error) {
+        done(error);
+      }
     });
   });
+
 
     // assert.ok(this.browser.success);
     // assert.equal(this.browser.text('h1'), 'Contact');

@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var createmakeathon = require('./routes/createmakeathon');
 
 var app = express();
+var server = require('http').Server(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/createmakeathon/makeathonmanagement', createmakeathon);
 app.use('/createmakeathon', createmakeathon);
 
 
@@ -58,4 +60,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+module.exports = server;
