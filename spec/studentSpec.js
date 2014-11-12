@@ -1,21 +1,37 @@
 'use strict'
 
 var Student = require('../src/student')
-
+var Makeathon = require('../src/makeathon')
 var student = null
+var september = null
 
-describe('a student do', function() {
+describe('a student', function() {
 
   beforeEach(function(){
     student = new Student ({name: 'Andrew', email: 'andrew@test.com' })
   });
 
-  it('should have a name', function() {
+  it('has a name', function() {
     expect(student.name).toEqual('Andrew');
   });
 
-  it('should have an email', function(){
+  it('has an email', function(){
     expect(student.email).toEqual('andrew@test.com')
   })
+
+  describe('relationships ', function() {
+
+    beforeEach(function() {
+      september = new Makeathon({name: 'september'})
+    })
+
+    it('has the makeathon id', function() {
+      september.addStudent(student)
+      expect(student.makeathon_id).toEqual(september.id)
+    });
+
+  });
+
+
 
 });

@@ -16,6 +16,7 @@ Makeathon.prototype.addProject = function(project){
 
 Makeathon.prototype.addStudent = function(student){
 	this.students.push(student);
+	student.makeathon_id = this._id;
 };
 
 module.exports = Makeathon
