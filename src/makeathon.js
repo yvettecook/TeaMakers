@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Student = require('./student')
 
 var makeathonSchema = new Schema({
 	name: 			String,
@@ -45,7 +46,29 @@ Makeathon.prototype.countStudents = function () {
 };
 
 Makeathon.prototype.isStudentsSubmitted = function () {
-	return false
+	var studentStatus = this.eachStudentStatus();
+	if(studentStatus[0] === false) {
+		return false
+		} else {
+			return true
+		}
+};
+
+Makeathon.prototype.eachStudentStatus = function () {
+	var studentStatus = []
+	this.students.forEach(function(student) {
+		studentStatus.push(student.submitted === true)
+	});
+	return studentStatus.sort();
 };
 
 module.exports = Makeathon
+
+
+// this.findOne({ 'local.students': {$elemMatch: {submitted: false}}}, function (err, student) {
+// 	if (err) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// });
