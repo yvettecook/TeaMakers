@@ -44,4 +44,8 @@ Makeathon.prototype.countStudents = function () {
 	return this.students.length;
 };
 
+Makeathon.prototype.isStudentsSubmitted = function () {
+	return false
+};
+
 module.exports = Makeathon

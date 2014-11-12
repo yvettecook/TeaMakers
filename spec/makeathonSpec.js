@@ -2,8 +2,12 @@
 
 var Makeathon = require('../src/makeathon');
 var Project = require('../src/project')
+var Student = require('../src/student')
 var september = null
 var october = null
+var victoria = null
+var andrew = null
+var yvette = null
 
 describe('a makeathon', function(){
 
@@ -78,22 +82,38 @@ describe('a makeathon', function(){
 
 		describe('with students', function(){
 
+			beforeEach(function(){
+				victoria = new Student({name: "Victoria"});
+				andrew = new Student({name: "Andrew"});
+				yvette = new Student({name: "Yvette"});
+				september.addStudent(andrew)
+				september.addStudent(victoria)
+				september.addStudent(yvette)
+			})
+
 			it('has an array of students', function() {
 				expect(isArray(september.students)).toBe(true)
 			});
 
 			it('can add a student to its student array', function(){
 				september.addStudent('Hercules')
-				expect(september.students[0]).toEqual('Hercules')
+				expect(september.students[3]).toEqual('Hercules')
 			});
 
 			it('can count its students', function(){
-				september.addStudent('Hercules')
-				september.addStudent('Victoria')
-				september.addStudent('Yvette')
 				expect(september.countStudents()).toEqual(3)
 			});
 
+			it('can report if not all students have submitted', function() {
+				expect(september.isStudentsSubmitted()).toEqual(false)
+			});
+
+			it('can report if all students have submitted', function(){
+				victoria.statusSubmitted()
+				andrew.statusSubmitted()
+				yvette.statusSubmitted()
+				expect(september.isStudentsSubmitted()).toEqual(true)
+			});
 		});
 
 	});
