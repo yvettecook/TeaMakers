@@ -21,4 +21,9 @@ describe('a makeathon', function(){
 		var october = new Makeathon();
 		expect(september._id).not.toEqual(october._id);
 	});
+
+	it('has an array of projects', function(){
+		var september = new Makeathon();
+		expect(september.projects).toMatch([]);
+	});
 });
