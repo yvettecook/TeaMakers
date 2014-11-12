@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var studentSchema = new Schema ({
   name:     String,
-
+  email:    String
 })
 
 var Student = mongoose.model('Student', studentSchema)

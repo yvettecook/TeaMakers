@@ -7,7 +7,7 @@ var student = null
 describe('a student do', function() {
 
   beforeEach(function(){
-    student = new Student ({name: 'Andrew'})
+    student = new Student ({name: 'Andrew', email: 'andrew@test.com' })
   });
 
   it('should have a name', function() {
@@ -15,7 +15,6 @@ describe('a student do', function() {
   });
 
   it('should have an email', function(){
-    student.email = 'andrew@test.com'
     expect(student.email).toEqual('andrew@test.com')
   })
 
