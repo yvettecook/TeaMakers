@@ -10,4 +10,8 @@ var makeathonSchema = new Schema({
 
 var Makeathon = mongoose.model('Makeathon', makeathonSchema);
 
+Makeathon.prototype.addProject = function(project){
+	this.projects.push(project);
+};
+
 module.exports = Makeathon
