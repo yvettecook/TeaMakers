@@ -57,24 +57,8 @@ describe('Makeathon creation form', function() {
       expect(browser.text('h1')).to.equal('Welcome to the Makeathon Management');
     })
   });
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

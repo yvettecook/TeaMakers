@@ -13,10 +13,15 @@ router.get('/create', function(req, res) {
   res.render('createmakeathon');
 });
 
-router.post('/manage', function(req, res) {
-  console.log(req.body.makeathon_name);
-  res.render('makeathonmanagement')
-});
+// router.post('/create', function(req, res) {
+//   makeathonProject.save({
+//       makeathon_name: req.param('makeathon_name')
+//       project_name: req.param('project_name')
+//       project_details: req.param('project_details')
+//   }, function(error, docs) {
+//       res.redirect('/')
+//     });
+// });
 
 // router.get('/manage', function(req, res) {
 //   console.log(req.params);
@@ -30,7 +35,7 @@ router.get('/student/form', function(req, res) {
 
 router.post('/student/manage', function(req, res) {
   console.log(req.body.makeathon_name);
-  res.render('makeathonmanagement')
+  res.render('studentconfmessage')
 });
 
 

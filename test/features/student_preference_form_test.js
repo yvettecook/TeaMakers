@@ -40,4 +40,18 @@ describe('Makeathon creation form', function() {
     });     
   });
 
+	it('should have a form that students can fill out', function() {
+    browser.visit('/makeathon/create')
+    .then(function() {
+      browser.fill('name', 'Test User')
+      browser.fill('email', 'test@test.com')
+      browser.fill('student_first_choice', 'Group Maker')
+      browser.fill('student_second_choice', 'Kickstarter')
+      browser.fill('student_third_choice', 'Jumper Finder')
+      browser.pressButton('Submit')
+    })
+    .then(function() {
+      expect(browser.text('h1')).to.equal('Thank you for submitting your preferences');
+    })
+ 	});
 });
