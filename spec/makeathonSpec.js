@@ -1,7 +1,9 @@
 'use strict';
 
 var Makeathon = require('../src/makeathon');
+var Project = require('../src/project')
 var september = null
+var october = null
 
 describe('a makeathon', function(){
 
@@ -28,26 +30,58 @@ describe('a makeathon', function(){
 
 	describe('relationships', function() {
 
-		it('has an array of projects', function(){
-			expect(isArray(september.projects)).toBe(true)
+		describe('with projects as strings', function(){
+
+			it('has an array of projects', function(){
+				expect(isArray(september.projects)).toBe(true)
+			});
+
+			it('can access individual projects', function(){
+				expect(september.projects[0]).toEqual('kickstarter')
+			});
+
+			it('can add projects to its project array', function(){
+				september.addProject('hairnado');
+				expect(september.projects[2]).toEqual('hairnado')
+			});
+
 		});
 
-		it('can access individual projects', function(){
-			expect(september.projects[0]).toEqual('kickstarter')
+		describe('with projects as objects', function() {
+
+			beforeEach(function(){
+				october = new Makeathon ({ name: 'October' })
+				var kickstarter = new Project({ name: 'Kickstarter', description: 'Money for Universities' });
+				var gitracer = new Project({ name: 'GitRacer', description: 'A race to commit' });
+				october.addProject(kickstarter);
+				october.addProject(gitracer);
+			})
+
+			it('can retrieve a project name', function() {
+				expect(october.projects[0].name).toEqual('Kickstarter')
+			});
+
+			it('can list all the project names', function() {
+				expect(october.listProjectNames()).toEqual(['Kickstarter', 'GitRacer'])
+			});
+
+			it('can list all the project descriptions', function(){
+				expect(october.listProjectNamesAndDescriptions()).toEqual({Kickstarter: 'Money for Universities', GitRacer: 'A race to commit' })
+			});
+
 		});
 
-		it('can add projects to its project array', function(){
-			september.addProject('hairnado');
-			expect(september.projects[2]).toEqual('hairnado')
-		});
+		describe('with students', function(){
 
-		it('has an array of students', function() {
-			expect(isArray(september.students)).toBe(true)
-		});
+			it('has an array of students', function() {
+				expect(isArray(september.students)).toBe(true)
+			});
 
-		it('can add a student to its student array', function(){
-			september.addStudent('Hercules')
-			expect(september.students[0]).toEqual('Hercules')
+			it('can add a student to its student array', function(){
+				september.addStudent('Hercules')
+				expect(september.students[0]).toEqual('Hercules')
+			});
+
 		});
 
 	});

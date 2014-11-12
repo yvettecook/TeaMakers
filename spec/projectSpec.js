@@ -1,6 +1,6 @@
 'use strict';
 
-var Project = require ('../src/projects')
+var Project = require ('../src/project')
 var Makeathon = require('../src/makeathon')
 var teamakers = null
 var september = null

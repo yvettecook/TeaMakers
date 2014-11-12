@@ -19,4 +19,20 @@ Makeathon.prototype.addStudent = function(student){
 	student.makeathon_id = this._id;
 };
 
+Makeathon.prototype.listProjectNames = function () {
+	var allProjectNames = []
+	this.projects.forEach(function(project){
+		allProjectNames.push(project.name);
+	});
+	return allProjectNames;
+};
+
+Makeathon.prototype.listProjectNamesAndDescriptions = function () {
+	var projectNamesAndDescriptions = {}
+	this.projects.forEach(function(project){
+		projectNamesAndDescriptions[project.name] = project.description
+	});
+	return projectNamesAndDescriptions
+};
+
 module.exports = Makeathon

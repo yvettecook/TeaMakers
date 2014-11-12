@@ -30,6 +30,8 @@ describe('a student', function() {
       expect(student.makeathon_id).toEqual(september.id)
     });
 
+    
+
   });
 
 
