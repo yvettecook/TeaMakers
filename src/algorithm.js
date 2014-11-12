@@ -11,6 +11,13 @@ Algorithm = function () {
     return combos
   };
 
+  Algorithm.prototype.possiblePermu = function (array) {
+    // var results = null
+    cmb = Combinatorics.permutation(array);
+    results = cmb.toArray()
+    return results
+  };
+
 };
 
 
