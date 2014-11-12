@@ -1,10 +1,10 @@
-'use strict';
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var makeathon = function Makeathon(name){
-	this.name = name;
-};
+var makeathonSchema = new Schema({
+	name: 	String,
+});
 
+var Makeathon = mongoose.model('Makeathon', makeathonSchema);
 
-module.exports = makeathon
-
-
+module.exports = Makeathon
