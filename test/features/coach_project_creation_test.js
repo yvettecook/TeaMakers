@@ -23,19 +23,19 @@ describe('coach makeathon creation form', function() {
     this.server.close(done);
   });
 
-  it('should have a header "Create makeathon"', function(){
-    this.browser.visit('/', function(error, browser){
-      expect(browser.text('h1')).to.equal('Create makeathon');
-    });
+  // it('should have a header "Create makeathon"', function() {
+  //   this.browser.visit('/createmakeathon', function(error, browser) {
+  //     expect(browser.text('h1')).to.equal('Create makeathon');
+  //   });
       
-  });
+  // });
 
   it('should have a field to enter the name of the makeathon', function() {
     // this.browser.pressButton('Submit');
-    this.browser.visit('/createmakeathon/makeathonmanagement', function(error, browser) {
+    this.browser.visit('/createmakeathon/createmakeathon/makeathonmanagement', function(error, browser) {
       expect(browser.text('h2')).to.equal('Success!');
     });
-    
+  });
 
     // assert.ok(this.browser.success);
     // assert.equal(this.browser.text('h1'), 'Contact');
@@ -51,7 +51,7 @@ describe('coach makeathon creation form', function() {
     //     //.fill('name', 'September 2014 Makeathon')
 
     // expect(browser.text('h1')).to.equal('Success!');
-  });
+
 
 
 

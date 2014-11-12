@@ -1,9 +1,21 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+/* GET home page. */
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+  res.render('createmakeathon');
 });
+
+// router.post('/makeathonmanagement', function(req, res) {
+// });
+
+router.get('/createmakeathon', function(req, res) {
+  res.render('createmakeathon');
+});
+
+router.get('/createmakeathon/makeathonmanagement', function(req, res) {
+  res.render('makeathonmanagement');
+});
+
 
 module.exports = router;
