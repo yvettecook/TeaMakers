@@ -20,5 +20,4 @@ Algorithm = function () {
 
 };
 
-
 module.exports = Algorithm
