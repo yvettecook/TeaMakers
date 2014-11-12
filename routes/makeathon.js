@@ -24,4 +24,14 @@ router.post('/manage', function(req, res) {
 // });
 
 
+router.get('/student/form', function(req, res) {
+  res.render('studentform');
+});
+
+router.post('/student/manage', function(req, res) {
+  console.log(req.body.makeathon_name);
+  res.render('makeathonmanagement')
+});
+
+
 module.exports = router;

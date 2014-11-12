@@ -27,7 +27,7 @@ app.use('/', routes);
 app.use('/makeathon', makeathon);
 app.use('/makeathon/create', makeathon);
 app.use('/makeathon/manage', makeathon);
-app.use('/makeathon/student/select', makeathon);
+app.use('/makeathon/student/form', makeathon);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
