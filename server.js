@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var createmakeathon = require('./routes/createmakeathon');
+var makeathon = require('./routes/makeathon');
 
 var app = express();
 var server = require('http').Server(app);
@@ -24,9 +24,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/createmakeathon/makeathonmanagement', createmakeathon);
-app.use('/createmakeathon', createmakeathon);
-
+app.use('/makeathon', makeathon);
+app.use('/makeathon/create', makeathon);
+app.use('/makeathon/manage', makeathon);
+app.use('/makeathon/student/select', makeathon);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
