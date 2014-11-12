@@ -4,13 +4,16 @@ var Schema = mongoose.Schema;
 var studentSchema = new Schema ({
   name:         String,
   email:        String,
-  makeathon_id: String
+  makeathon_id: String,
+  submitted: 		{type: Boolean, "default": false}
 })
 
 var Student = mongoose.model('Student', studentSchema)
 
-Student.prototype.setRanking = function (project, ranking) {
-  project.studentPreferences[this._id] = ranking;
+
+
+Student.prototype.statusSubmitted = function () {
+  this.submitted = true
 };
 
 module.exports = Student;

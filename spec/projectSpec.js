@@ -49,13 +49,13 @@ describe('a project', function() {
     })
 
     it('students can rank a project', function(){
-      victoria.setRanking(teamakers, 1)
+      teamakers.setAStudentsRanking(victoria, 1)
       expect(teamakers.studentPreferences[victoria._id]).toEqual(1)
     });
 
-    it('another student can rank a project', function(){
-      andrew.setRanking(teamakers, 2)
-      victoria.setRanking(teamakers, 1)
+    it('2 students can rank a project', function(){
+      teamakers.setAStudentsRanking(andrew, 2)
+      teamakers.setAStudentsRanking(victoria, 1)
       console.log(teamakers.studentPreferences)
       expect(teamakers.studentPreferences[victoria._id]).toEqual(1)
       expect(teamakers.studentPreferences[andrew._id]).toEqual(2)

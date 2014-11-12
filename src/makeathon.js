@@ -5,6 +5,7 @@ var makeathonSchema = new Schema({
 	name: 			String,
 	projects: 	{type: Array, "default": []},
 	students: 	{type: Array, "default": []},
+
 });
 
 var Makeathon = mongoose.model('Makeathon', makeathonSchema);
@@ -33,6 +34,14 @@ Makeathon.prototype.listProjectNamesAndDescriptions = function () {
 		projectNamesAndDescriptions[project.name] = project.description
 	});
 	return projectNamesAndDescriptions
+};
+
+Makeathon.prototype.countProjects = function () {
+	return this.projects.length;
+};
+
+Makeathon.prototype.countStudents = function () {
+	return this.students.length;
 };
 
 module.exports = Makeathon

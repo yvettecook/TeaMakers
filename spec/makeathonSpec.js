@@ -69,6 +69,11 @@ describe('a makeathon', function(){
 				expect(october.listProjectNamesAndDescriptions()).toEqual({Kickstarter: 'Money for Universities', GitRacer: 'A race to commit' })
 			});
 
+			it('can count its projects', function(){
+				expect(october.countProjects()).toEqual(2)
+			});
+
+
 		});
 
 		describe('with students', function(){
@@ -80,6 +85,13 @@ describe('a makeathon', function(){
 			it('can add a student to its student array', function(){
 				september.addStudent('Hercules')
 				expect(september.students[0]).toEqual('Hercules')
+			});
+
+			it('can count its students', function(){
+				september.addStudent('Hercules')
+				september.addStudent('Victoria')
+				september.addStudent('Yvette')
+				expect(september.countStudents()).toEqual(3)
 			});
 
 		});
