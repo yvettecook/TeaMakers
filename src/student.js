@@ -9,4 +9,8 @@ var studentSchema = new Schema ({
 
 var Student = mongoose.model('Student', studentSchema)
 
+Student.prototype.setRanking = function (project, ranking) {
+  project.studentPreferences[this._id] = ranking;
+};
+
 module.exports = Student;

@@ -2,8 +2,12 @@
 
 var Project = require ('../src/project')
 var Makeathon = require('../src/makeathon')
+var Student = require('../src/student')
 var teamakers = null
 var september = null
+var victoria = null
+var andrew = null
+var yvette = null
 
 describe('a project', function() {
 
@@ -35,5 +39,29 @@ describe('a project', function() {
     })
 
   })
+
+  describe('stores student preferences', function() {
+
+    beforeEach(function(){
+      victoria = new Student({name: "Victoria"});
+      andrew = new Student({name: "Andrew"});
+      yvette = new Student({name: "Yvette"});
+    })
+
+    it('students can rank a project', function(){
+      victoria.setRanking(teamakers, 1)
+      expect(teamakers.studentPreferences[victoria._id]).toEqual(1)
+    });
+
+    it('another student can rank a project', function(){
+      andrew.setRanking(teamakers, 2)
+      victoria.setRanking(teamakers, 1)
+      console.log(teamakers.studentPreferences)
+      expect(teamakers.studentPreferences[victoria._id]).toEqual(1)
+      expect(teamakers.studentPreferences[andrew._id]).toEqual(2)
+    });
+
+
+  });
 
 })
