@@ -1,13 +1,13 @@
 var express = require('express');
 var expressLayouts = require('express-ejs-layouts');
 var path = require('path');
+require('./app_api/models/db');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var makeathon = require('./routes/makeathon');
 
 var app = express();
 var server = require('http').Server(app);
@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var makeathon = require('./routes/makeathon');
 app.use('/', routes);
 app.use('/makeathon', makeathon);
 app.use('/makeathon/create', makeathon);

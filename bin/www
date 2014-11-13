@@ -2,6 +2,8 @@
 var debug = require('debug')('teamakers');
 var server = require('../server');
 
+require('../app_api/routes')
+
 var port = process.env.PORT || 3000;
 
 var server = server.listen(port, function() {
