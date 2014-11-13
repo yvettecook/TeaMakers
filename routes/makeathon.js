@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
 var Makeathon = mongoose.model('Makeathon')
+var Project = mongoose.model('Project')
 
 // [
 //   { id: 12,
@@ -17,14 +18,28 @@ router.post('/create', function(req, res) {
   console.log(req.body); //provides all params info in an object
   //send request body to database
   var new_makeathon = new Makeathon ({ 
-    // id: req.param('makeathon_id'),
     name: req.param('makeathon_name')
   });
+
   new_makeathon.save(function(err) {
     if (err) return handleError(err);
   }); 
+
   var id = new_makeathon._id
-  console.log(id);
+
+  var new_project1 = new Project ({
+    name: req.param('project_name'),
+    description: req.param('project_details'),
+    makeathon_id: new_makeathon._id
+  });
+
+  new_project1.save(function(err) {
+    if (err) return handleError(err);
+  });
+
+  new_makeathon.addProject(new_project1); 
+
+  console.log(new_makeathon);
   res.redirect('/makeathon/' + id )
 });
 
