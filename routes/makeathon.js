@@ -17,13 +17,13 @@ router.post('/create', function(req, res) {
   console.log(req.body); //provides all params info in an object
   //send request body to database
   var new_makeathon = new Makeathon ({ 
-    id: req.param('makeathon_id'),
+    // id: req.param('makeathon_id'),
     name: req.param('makeathon_name')
   });
   new_makeathon.save(function(err) {
     if (err) return handleError(err);
   }); 
-  var id = req.body.makeathon_id
+  var id = new_makeathon._id
   console.log(id);
   res.redirect('/makeathon/' + id )
 });
@@ -33,8 +33,10 @@ router.post('/create', function(req, res) {
 router.get('/:id', function(req, res) {
 
   Makeathon.findById(req.params.id, function(error, data) {
+    console.log(data)
     res.render('makeathonmanagement', { makeathon : data } );
   }); 
+
 });
 
 
