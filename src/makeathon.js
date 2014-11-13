@@ -29,6 +29,7 @@ Makeathon.prototype.listProjectNames = function () {
 	return allProjectNames;
 };
 
+// 
 Makeathon.prototype.listProjectNamesAndDescriptions = function () {
 	var projectNamesAndDescriptions = {}
 	this.projects.forEach(function(project){
@@ -72,3 +73,12 @@ module.exports = Makeathon
 // 		return false;
 // 	}
 // });
+
+// Makeathon.prototype.listProjectIDs = function () {
+// 	var allProjectIDs = []
+// 	this.projects.forEach(function(project){
+// 		allProjectIDs.push(project._id);
+// 	});
+// 	return allProjectIDs;
+// };
+
