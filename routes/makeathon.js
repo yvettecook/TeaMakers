@@ -7,7 +7,10 @@ router.get('/create', function(req, res) {
 
 router.post('/create', function(req, res) {
   console.log(req.body); //provides all params info in an object
-  res.redirect('/makeathon/manage')
+  console.log(req.body.makeathon_name)
+  var makeathonName = req.body.makeathon_name
+  res.render('makeathonmanagement', {makeathonName: makeathonName} )
+  // res.redirect('/makeathon/manage')
 });
 
 router.get('/manage', function(req, res) {
