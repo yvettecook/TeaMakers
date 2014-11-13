@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var makeathons = [
-  { name : 'september',
+  { id: 12,
+    name : 'september',
     description: 'flippin awesome cohort' }
 ]
 
@@ -22,9 +23,16 @@ router.get('/manage', function(req, res) {
   console.log(req.body);
 });
 
-router.get('/:name', function(req, res) {
-  var makeathon_name = req.params.name
-  res.render('makeathonmanagement', {makeathon_name : makeathon_name} );
+router.get('/:id', function(req, res) {
+
+  var makeathon = makeathons.filter(function( makeathon ) {
+    return makeathon.id == req.params.id;
+  });
+  
+  var makeathon_name = makeathon[0].name
+  var makeathon_description = makeathon[0].description
+  
+  res.render('makeathonmanagement', {makeathon_name : makeathon_name, makeathon_description : makeathon_description } );
 });
 
   // makeathonProject.save({
