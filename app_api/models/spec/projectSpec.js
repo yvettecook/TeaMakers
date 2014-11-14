@@ -48,12 +48,12 @@ describe('a project', function() {
       yvette = new Student({name: "Yvette"});
     })
 
-    it('students can rank a project', function(){
+    xit('students can rank a project', function(){
       teamakers.setAStudentsRanking(victoria, 1)
       expect(teamakers.studentPreferences[victoria._id]).toEqual(1)
     });
 
-    it('2 students can rank a project', function(){
+    xit('2 students can rank a project', function(){
       teamakers.setAStudentsRanking(andrew, 2)
       teamakers.setAStudentsRanking(victoria, 1)
       expect(teamakers.studentPreferences[victoria._id]).toEqual(1)

@@ -19,20 +19,6 @@ describe('a makeathon', function(){
 		return Object.prototype.toString.call(object) == '[object Array]';
 	}
 
-	beforeEach(function() {
-		mongoose.connect('mongodb://localhost/testmakeathon')
-		mongoose.connnection.on('connected', function() {
-			console.log('***' + 'Mongoose connected')
-		mongoose.connection.on('disconnected', function() {
-			console.log('Mongoose disconnected')
-		});
-	})
-	//
-	afterEach(function() {
-		mongoose.connection.close()
-		})
-	})
-
 	describe('...', function() {
 
 		beforeEach(function(){
@@ -42,7 +28,7 @@ describe('a makeathon', function(){
 			})
 		});
 
-		it('has a name', function(){
+		xit('has a name', function(){
 			Makeathon.findOne({	'name' : 'September 2014'	}, function(error, data) {
 				console.log(data)
 			})

@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+uniqueValidator =require('mongoose-unique-validator')
+
 var Student = require('./student')
 var Project = require('./project')
 
 var makeathonSchema = new Schema({
-	name: 			String,
+	name: 			{type: String, required: true },
 	projects: 	{type: Array, "default": []},
 	students: 	{type: Array, "default": []},
 

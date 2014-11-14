@@ -31,16 +31,58 @@ describe('a makeathon', function(){
   })
 
   it('has a name', function(done){
-    september = new Makeathon({ name: 'September 2014', projects: ['kickstarter', 'git racer'], blbllbnssdg: "q23434t" });
+    september = new Makeathon({ name: 'September 2014', projects: ['kickstarter', 'git racer'] });
     september.save(function (err) {
-      if (err) console.log(err);
+      if (err) done(err);
       Makeathon.findOne({	'name' : 'September 2014'	}, function(error, data) {
-        console.log(data)
         expect(data['name']).to.eql('September 2014')
         done()
       })
-    })
+    });
   });
 
+  it('its name must not be empty', function(done){
+    september = new Makeathon({ name: '', projects: ['kickstarter', 'git racer'] });
+    september.save(function (err) {
+      expect(err).to.not.eql(null)
+      done()
+    });
+  });
+
+  describe('projects', function() {
+
+    before(function(done) {
+        september = new Makeathon({ name: 'September' });
+        september.save(function(err){
+        });
+        teamakers = new Project({name: "teamakers", description: 'Putting people in teams.'});
+        teamakers.save(function(err){
+        });
+        yvette = new Student({ name: 'Yvette' })
+        yvette.save(function(err){
+        })
+        september.addProject(teamakers)
+        september.addStudent(yvette)
+        done()
+    })
+
+
+      it('properly can record a student id and preferences', function(done) {
+        var yvetteId = yvette.id
+        teamakers.setAStudentsRanking(yvette, 1, function() {
+          try {
+            expect(september.projects[0].studentPreferences[yvetteId]).to.eql(1)
+            done()
+          } catch(error) {
+            done(error)
+          }
+        })
+      });
+
+      it('**', function() {
+        console.log(teamakers.listStudentNameRanking())
+      })
+
+    });
 
   });
