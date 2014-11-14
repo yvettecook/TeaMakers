@@ -49,7 +49,10 @@ router.get('/:id', function(req, res) {
 
   Makeathon.findById(req.params.id, function(error, data) {
     console.log(data)
-    res.render('makeathonmanagement', { makeathon : data } );
+    var projects = data.listProjectNamesAndDescriptions();
+    res.render('makeathonmanagement', { makeathon : data, projectList : projects } );
+    
+    console.log(makeathon);
   }); 
 
 });
