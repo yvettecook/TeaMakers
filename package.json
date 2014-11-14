@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "test": "mocha && jasmine-node",
     "mocha": "mocha",
-    "jas": "jasmine-node --verbose spec/"
+    "jas": "jasmine-node --verbose app_api/models"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
@@ -22,6 +22,7 @@
     "js-combinatorics": "^0.4.0",
     "mongo": "*",
     "mongoose": "^3.8.19",
+    "mongoose-unique-validator": "^0.4.1",
     "morgan": "~1.3.0",
     "req-flash": "0.0.2",
     "serve-favicon": "~2.1.3",

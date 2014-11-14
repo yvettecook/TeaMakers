@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+uniqueValidator =require('mongoose-unique-validator')
+
 var Student = require('./student')
 var Project = require('./project')
 
 var makeathonSchema = new Schema({
-	name: 			String,
+	name: 			{type: String, required: true },
 	projects: 	{type: Array, "default": []},
 	students: 	{type: Array, "default": []},
 
@@ -30,7 +32,7 @@ Makeathon.prototype.listProjectNames = function () {
 	return allProjectNames;
 };
 
-// 
+
 Makeathon.prototype.listProjectNamesAndDescriptions = function (callback) {
 	var projectNamesAndDescriptions = {}
 	this.projects.forEach(function(project){
@@ -67,9 +69,11 @@ Makeathon.prototype.eachStudentStatus = function () {
 Makeathon.prototype.findMakeathonById = function(id) {
 	Makeathon.find({ makeathon_id: id}, function(err, obj) {
 		console.log(obj[0].name)
-	}) 
+	})
 };
 
+
+module.exports = Makeathon
 
 // this.findOne({ 'local.students': {$elemMatch: {submitted: false}}}, function (err, student) {
 // 	if (err) {
@@ -86,4 +90,3 @@ Makeathon.prototype.findMakeathonById = function(id) {
 // 	});
 // 	return allProjectIDs;
 // };
-

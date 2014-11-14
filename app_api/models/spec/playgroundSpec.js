@@ -19,25 +19,25 @@ describe ('Test Makeathon', function(){
 
 	beforeEach(function(){
 		october = new Makeathon({ name: 'October' })
-		october.projects = [ 	project1 = new Project({name: 'project1' }), 
-													project2 = new Project({name: 'project2' }), 
-													project3 = new Project({name: 'project3' }), 
-													project4 = new Project({name: 'project4' }), 
-													project5 = new Project({name: 'project5' }), 
-													project6 = new Project({name: 'project6' }) 
+		october.projects = [ 	project1 = new Project({name: 'project1' }),
+													project2 = new Project({name: 'project2' }),
+													project3 = new Project({name: 'project3' }),
+													project4 = new Project({name: 'project4' }),
+													project5 = new Project({name: 'project5' }),
+													project6 = new Project({name: 'project6' })
 												]
 		october.students = [ 	new Student({name: 'dog' }), new Student({name: 'cat' }),
-													new Student({name: 'mouse' }), new Student({name: 'ibex' }),
-													new Student({name: 'rat' }), new Student({name: 'zebra' }),
+													new Student({name: 'moo' }), new Student({name: 'ibex' }),
+													new Student({name: 'rat' }), new Student({name: 'zeb' }),
 													new Student({name: 'lion' }), new Student({name: 'pig' }),
-													new Student({name: 'frog' }), new Student({name: 'llama' }),
+													new Student({name: 'frog' }), new Student({name: 'lla' }),
 													new Student({name: 'fox' }), new Student({name: 'wolf' }),
 												]
 		october.students.forEach(function(student){
 			// console.log(threeRandomProjects(october.projects))
 		});
 	});
-		
+
 		it('can list all projects', function() {
 			var names = october.listProjectNames()
 			expect(names.length).toEqual(6);
@@ -47,8 +47,8 @@ describe ('Test Makeathon', function(){
 		it('can generate three random projects', function() {
 			var projects = october.listProjectNames();
 			var choices = threeRandomProjects(projects)
-			console.log(choices)
 			expect(choices.length).toEqual(3)
+			console.log(october)
 		});
 
 });
@@ -59,6 +59,3 @@ describe ('Test Makeathon', function(){
 		randomChoices = _.sample(projectsArray, 3);
 		return randomChoices;
 };
-
-
-
