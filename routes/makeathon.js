@@ -28,8 +28,8 @@ router.post('/create', function(req, res) {
   var id = new_makeathon._id
 
   var new_project1 = new Project ({
-    name: req.param('project_name'),
-    description: req.param('project_details'),
+    name: req.param('project1_name'),
+    description: req.param('project1_details'),
     makeathon_id: new_makeathon._id
   });
 
@@ -38,6 +38,18 @@ router.post('/create', function(req, res) {
   });
 
   new_makeathon.addProject(new_project1); 
+
+  var new_project2 = new Project ({
+    name: req.param('project2_name'),
+    description: req.param('project2_details'),
+    makeathon_id: new_makeathon._id
+  });
+
+  new_project2.save(function(err) {
+    if (err) return handleError(err);
+  });
+
+  new_makeathon.addProject(new_project2); 
 
   console.log(new_makeathon);
   res.redirect('/makeathon/' + id )
@@ -49,10 +61,9 @@ router.get('/:id', function(req, res) {
 
   Makeathon.findById(req.params.id, function(error, data) {
     console.log(data)
-    var projects = data.listProjectNamesAndDescriptions();
-    res.render('makeathonmanagement', { makeathon : data, projectList : projects } );
-    
-    console.log(makeathon);
+    // data.listProjectNamesAndDescriptions(function(projects) {
+      res.render('makeathonmanagement', { makeathon : data } );
+    // });
   }); 
 
 });

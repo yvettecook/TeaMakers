@@ -31,12 +31,12 @@ Makeathon.prototype.listProjectNames = function () {
 };
 
 // 
-Makeathon.prototype.listProjectNamesAndDescriptions = function () {
+Makeathon.prototype.listProjectNamesAndDescriptions = function (callback) {
 	var projectNamesAndDescriptions = {}
 	this.projects.forEach(function(project){
 		projectNamesAndDescriptions[project.name] = project.description
 	});
-	return projectNamesAndDescriptions
+	callback(projectNamesAndDescriptions);
 };
 
 Makeathon.prototype.countProjects = function () {
