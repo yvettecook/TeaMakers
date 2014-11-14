@@ -27,34 +27,21 @@ router.post('/create', function(req, res) {
 
   var id = new_makeathon._id
 
-  var new_project1 = new Project ({
-    name: req.param('project1_name'),
-    description: req.param('project1_details'),
+  var new_project = new Project ({
+    name: req.param('project_name'),
+    description: req.param('project_details'),
     makeathon_id: new_makeathon._id
   });
 
-  new_project1.save(function(err) {
+  new_project.save(function(err) {
     if (err) return handleError(err);
   });
 
-  new_makeathon.addProject(new_project1); 
-
-  var new_project2 = new Project ({
-    name: req.param('project2_name'),
-    description: req.param('project2_details'),
-    makeathon_id: new_makeathon._id
-  });
-
-  new_project2.save(function(err) {
-    if (err) return handleError(err);
-  });
-
-  new_makeathon.addProject(new_project2); 
+  new_makeathon.addProject(new_project); 
 
   console.log(new_makeathon);
   res.redirect('/makeathon/' + id )
 });
-
 
 
 router.get('/:id', function(req, res) {
@@ -66,6 +53,38 @@ router.get('/:id', function(req, res) {
     // });
   }); 
 
+});
+
+router.get('/project/new', function(req, res){
+
+  Makeathon.findById(req.query.id, function(error, data){
+      res.render('newproject', { makeathon : data });
+  });
+
+});
+
+router.post('/project/add', function(req, res) {
+  Makeathon.findById(req.query.id, function(error, data){
+    var makeathon = data
+    var id = makeathon._id
+
+    var new_project = new Project ({
+      name: req.param('project_name'),
+      description: req.param('project_details'),
+      makeathon_id: makeathon._id
+    });
+
+    new_project.save(function(err) {
+      if (err) return handleError(err);
+    });
+
+    makeathon.addProject(new_project);
+
+    makeathon.save(function(err) {
+     if (err) return handleError(err);
+    }); 
+    res.redirect('/makeathon/' + id )
+    });
 });
 
 

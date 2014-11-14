@@ -1,0 +1,9 @@
+<body>
+  <h2> Add Project to <%= makeathon.name %>.</h2>
+  <form action='/makeathon/project/add?id=<%= makeathon._id %>' method='post' name='add_project' id='add_project'>
+    Project Name: <input id='makeathon_name' type='text' name='project_name'>
+    Project Details: <input id='makeathon_name' type='text' name='project_details'><br /><br />
+    <br />
+    <button id='Submit' type='submit'>Submit</button>
+  </form>
+</body>

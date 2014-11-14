@@ -36,7 +36,7 @@ describe('Makeathon creation form', function() {
   //   });     
   // });
 
-  it('should have a form that users can fill out', function() {
+  it('should have a form that users can fill out and a link to add new projects', function() {
     browser.visit('/makeathon/new')
     .then(function() {
       browser.fill('makeathon_name', 'September 2014')
@@ -46,8 +46,9 @@ describe('Makeathon creation form', function() {
       browser.pressButton('Submit')
     })
     .then(function() {
-      // expect(browser.text('h1')).to.equal('Welcome to the Makeathon Management');
+      expect(browser.text('h1')).to.equal('Welcome to the Makeathon Management');
       expect(browser.text('h2')).to.equal('September 2014');
+      expect(browser.text('a')).to.equal('Add new project')
     })
   });
 
