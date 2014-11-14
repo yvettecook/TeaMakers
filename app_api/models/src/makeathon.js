@@ -30,7 +30,7 @@ Makeathon.prototype.listProjectNames = function () {
 	return allProjectNames;
 };
 
-// 
+//
 Makeathon.prototype.listProjectNamesAndDescriptions = function () {
 	var projectNamesAndDescriptions = {}
 	this.projects.forEach(function(project){
@@ -67,9 +67,11 @@ Makeathon.prototype.eachStudentStatus = function () {
 Makeathon.prototype.findMakeathonById = function(id) {
 	Makeathon.find({ makeathon_id: id}, function(err, obj) {
 		console.log(obj[0].name)
-	}) 
+	})
 };
 
+
+module.exports = Makeathon
 
 // this.findOne({ 'local.students': {$elemMatch: {submitted: false}}}, function (err, student) {
 // 	if (err) {
@@ -86,4 +88,3 @@ Makeathon.prototype.findMakeathonById = function(id) {
 // 	});
 // 	return allProjectIDs;
 // };
-

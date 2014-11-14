@@ -7,7 +7,7 @@
     "start": "node ./bin/www",
     "test": "mocha && jasmine-node",
     "mocha": "mocha",
-    "jas": "jasmine-node --verbose spec/"
+    "jas": "jasmine-node --verbose app_api/models"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
