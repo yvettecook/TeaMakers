@@ -54,6 +54,6 @@ We've learnt a lot from this project - primarily probably that Node's power does
 
 ## Team
 
-@andrewhercules
-@barr-code
-@yvettecook
+* [@andrewhercules](https://github.com/andrewhercules)
+* [@barr-code](https://github.com/barr-code)
+* [@yvettecook](https://github.com/yvettecook)
