@@ -13,33 +13,30 @@ var Project = mongoose.model('Project')
 router.get('/new', function(req, res) {
   res.render('createmakeathon');
 });
-
 router.post('/create', function(req, res) {
-  console.log(req.body); //provides all params info in an object
+  console.log('********************')
+  console.log(req.body)
+  console.log('********************')
   //send request body to database
   var new_makeathon = new Makeathon ({ 
     name: req.param('makeathon_name')
   });
-
   new_makeathon.save(function(err) {
     if (err) return handleError(err);
   }); 
-
   var id = new_makeathon._id
-
   var new_project = new Project ({
     name: req.param('project_name'),
     description: req.param('project_details'),
     makeathon_id: new_makeathon._id
   });
-
   new_project.save(function(err) {
     if (err) return handleError(err);
   });
-
   new_makeathon.addProject(new_project); 
-
+  console.log('********************')
   console.log(new_makeathon);
+  console.log('********************')
   res.redirect('/makeathon/' + id )
 });
 
@@ -47,9 +44,12 @@ router.post('/create', function(req, res) {
 router.get('/:id', function(req, res) {
 
   Makeathon.findById(req.params.id, function(error, data) {
-    console.log(data)
+    
     // data.listProjectNamesAndDescriptions(function(projects) {
       res.render('makeathonmanagement', { makeathon : data } );
+    // console.log('********************')
+    // console.log(makeathon)
+    // console.log('********************')
     // });
   }); 
 
@@ -90,10 +90,10 @@ router.post('/project/add', function(req, res) {
 
 
 
-router.get('/manage', function(req, res) {
-  res.render('makeathonmanagement');
-  console.log(req.body);
-});
+// router.get('/manage', function(req, res) {
+//   res.render('makeathonmanagement');
+//   console.log(req.body);
+// });
 
   // makeathonProject.save({
   //     makeathon_name: req.param('makeathon_name')
@@ -110,11 +110,14 @@ router.get('/manage', function(req, res) {
 
 
 router.get('/student/form', function(req, res) {
-  res.render('studentform');
+  Makeathon.findById(req.query.id, function(error, data){
+    res.render('studentform', { makeathon : data });  
+  });
+  
+
 });
 
 router.post('/student/manage', function(req, res) {
-  console.log(req.body.makeathon_name);
   res.render('studentconfmessage')
 });
 
